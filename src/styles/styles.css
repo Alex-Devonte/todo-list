@@ -11,3 +11,16 @@
 .edit-icon, .delete-icon {
     width: 48px;
 }
+
+form {
+    visibility: hidden;
+}
+
+.error-msg {
+    color: red;
+    display: none;
+}
+
+.error {
+    border: 1px solid red;
+}

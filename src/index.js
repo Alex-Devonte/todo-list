@@ -12,3 +12,4 @@ const test6 = todoModule.createTodo('test', 'mydesc', 'now', 'high');
 const todos = [test,test2,test3,test4,test5,test6];
 
 interfaceModule.displayTodos(todos);
+interfaceModule.validateForm();

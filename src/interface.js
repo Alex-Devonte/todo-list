@@ -1,6 +1,58 @@
 const container = document.querySelector('.todo-container');
-
+const newTodoForm = document.querySelector('#new-todo-form');
 const interfaceModule = (function() {
+
+    function validateForm() {
+        const newTodoBtn = document.querySelector('.new-todo-btn');
+        const addTodoBtn = document.querySelector('#add-todo-btn');
+
+        newTodoBtn.addEventListener('click', function() {
+            newTodoForm.style.visibility = 'visible';
+        });
+    
+        addTodoBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            let isValid = true;
+
+            let title = document.querySelector('#title');
+            let desc = document.querySelector('#description');
+            let priority = document.querySelector('input[name="priority"]:checked');
+    
+            let titleError = document.querySelector('.title-error');
+            let priorityError = document.querySelector('.priority-error');
+    
+            if (title.value == '') {
+                titleError.style.display = 'block';
+                title.classList.add('error');   
+                isValid = false;
+            } else {
+                titleError.style.display = 'none';
+                title.classList.remove('error');
+            }
+    
+            if (!priority) {
+                priorityError.style.display = 'block';
+                isValid = false;
+            } else {
+                priorityError.style.display = 'none';
+                priority = priority.value;
+            }
+    
+            if (isValid) {
+                //add todo
+                clearForm();
+                newTodoForm.style.visibility = 'hidden';
+            }
+        });
+    }
+
+    function clearForm() {
+        document.querySelectorAll('input, textarea, input[type="radio"]').forEach(function(input) {
+            input.value = '';
+            input.checked = false;
+        });
+    }
+
     function createSvgElement(svgString, className) {
         //The DOMParser interface provides the ability to parse XML
         const parser = new DOMParser();
@@ -55,7 +107,7 @@ const interfaceModule = (function() {
             createTodoElement(todo);
         });
     }
-    return {createTodoElement, displayTodos};
+    return {createTodoElement, displayTodos, validateForm};
 })();
 
 export default interfaceModule;
