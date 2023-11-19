@@ -21,6 +21,7 @@ const interfaceModule = (function() {
             let titleError = document.querySelector('.title-error');
             let priorityError = document.querySelector('.priority-error');
     
+            //Show error msg/styles if input isn't valid
             if (title.value == '') {
                 titleError.style.display = 'block';
                 title.classList.add('error');   
@@ -30,6 +31,7 @@ const interfaceModule = (function() {
                 title.classList.remove('error');
             }
     
+            //Show error msg if no selection is checked
             if (!priority) {
                 priorityError.style.display = 'block';
                 isValid = false;
