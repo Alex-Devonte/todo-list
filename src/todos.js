@@ -1,8 +1,18 @@
 const todoModule = (function() {
-    function createTodo(title, desc, dueDate, priority) {
-        return {title, desc, dueDate, priority};
+    const todoList = [];
+
+    function createTodo(title, desc, priority) {
+        return {title, desc, priority};
     }
-    return { createTodo,};
+
+    function addTodo(todo) {
+        todoList.push(todo);
+    }
+
+    function getTodos() {
+        return todoList;
+    }
+    return { createTodo, addTodo, getTodos};
 })();
 
 export default todoModule;

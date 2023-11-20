@@ -1,5 +1,8 @@
+import todoModule from "./todos";
+
 const container = document.querySelector('.todo-container');
 const newTodoForm = document.querySelector('#new-todo-form');
+
 const interfaceModule = (function() {
 
     function validateForm() {
@@ -29,6 +32,7 @@ const interfaceModule = (function() {
             } else {
                 titleError.style.display = 'none';
                 title.classList.remove('error');
+                title = title.value;
             }
     
             //Show error msg if no selection is checked
@@ -41,9 +45,11 @@ const interfaceModule = (function() {
             }
     
             if (isValid) {
-                //add todo
-                clearForm();
                 newTodoForm.style.visibility = 'hidden';
+                todoModule.addTodo(todoModule.createTodo(title, desc.value, priority));
+                
+                clearForm();
+                displayTodos();
             }
         });
     }
@@ -106,8 +112,11 @@ const interfaceModule = (function() {
         container.appendChild(todoElement);
     }
     
-    function displayTodos(todos) {
-        todos.forEach(todo => {
+    function displayTodos() {
+        container.textContent = '';
+        let todoList = todoModule.getTodos();
+
+        todoList.forEach(todo => {
             createTodoElement(todo);
         });
     }
