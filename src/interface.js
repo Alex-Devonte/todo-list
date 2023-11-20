@@ -49,8 +49,10 @@ const interfaceModule = (function() {
     }
 
     function clearForm() {
-        document.querySelectorAll('input, textarea, input[type="radio"]').forEach(function(input) {
+        document.querySelectorAll('input[type="text"], textarea').forEach(function(input) {
             input.value = '';
+        });
+        document.querySelectorAll('input[type="radio"]').forEach(function(input) {
             input.checked = false;
         });
     }
