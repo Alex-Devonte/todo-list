@@ -1,13 +1,13 @@
 import todoModule from "./todos";
 
 const container = document.querySelector('.todo-container');
-const newTodoForm = document.querySelector('#new-todo-form');
 
 const interfaceModule = (function() {
 
     function validateForm() {
         const newTodoBtn = document.querySelector('.new-todo-btn');
         const addTodoBtn = document.querySelector('#add-todo-btn');
+        const newTodoForm = document.querySelector('#new-todo-form');
 
         newTodoBtn.addEventListener('click', function() {
             newTodoForm.style.visibility = 'visible';
