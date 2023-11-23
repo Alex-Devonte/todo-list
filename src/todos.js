@@ -1,8 +1,9 @@
 const todoModule = (function() {
-    const todoList = [];
+    let todoList = [];
+    let counter = 0;
 
     function createTodo(title, desc, priority) {
-        return {id: todoList.length, title, desc, priority};
+        return {id: counter++, title, desc, priority};
     }
 
     function addTodo(todo) {
@@ -21,6 +22,11 @@ const todoModule = (function() {
         } 
     }
 
+    function deleteTodo(todoID) {
+        //Filter todoList to exclude the todo with the specified id
+       todoList = todoList.filter(todo => todo.id !== Number(todoID));
+    }
+    
     function getTodo(todoID) {
         return todoList[todoID];
     }
@@ -28,7 +34,7 @@ const todoModule = (function() {
     function getTodos() {
         return todoList;
     }
-    return { createTodo, addTodo, updateTodo, getTodo, getTodos};
+    return { createTodo, addTodo, updateTodo, deleteTodo, getTodo, getTodos};
 })();
 
 export default todoModule;

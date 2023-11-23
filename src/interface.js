@@ -117,6 +117,11 @@ const interfaceModule = (function() {
             const todoID = todoElement.getAttribute('data-id');
             handleEditTodo(todoID);
         });
+
+        todoDelete.addEventListener('click', function() {
+            const todoID = todoElement.getAttribute('data-id');
+            handleDeleteTodo(todoID);
+        });
     
         container.appendChild(todoElement);
     }
@@ -155,6 +160,11 @@ const interfaceModule = (function() {
                 updateBtn.removeEventListener('click', handleUpdate);
             }
         });
+    }
+
+    function handleDeleteTodo(todoID) {
+        todoModule.deleteTodo(todoID);
+        displayTodos();
     }
     
     function displayTodos() {
