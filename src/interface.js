@@ -139,7 +139,7 @@ const interfaceModule = (function() {
         const editPriority = document.querySelector(`input[name="edit-priority"][value="${currentTodo.priority}"]`);
         editPriority.checked = true;
 
-        updateBtn.addEventListener('click', function() {
+        updateBtn.addEventListener('click', function handleUpdate() {
             const checkedPriority = document.querySelector('input[name="edit-priority"]:checked');
             //Prevent console error by only assigning value if the radio button is checked
             if (checkedPriority) {
@@ -150,6 +150,9 @@ const interfaceModule = (function() {
                 
                 clearForm();
                 displayTodos();
+
+                //Remove event listener to prevent it from being called twice
+                updateBtn.removeEventListener('click', handleUpdate);
             }
         });
     }
