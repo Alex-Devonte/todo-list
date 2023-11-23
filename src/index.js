@@ -8,6 +8,3 @@ const test = todoModule.createTodo('test', 'desc', 'high');
 todoModule.addTodo(test);
 interfaceModule.displayTodos();
 interfaceModule.validateForm();
-
-//delete functionaily
-//fix bug where edit edits wrong
