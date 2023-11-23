@@ -79,6 +79,10 @@ const interfaceModule = (function() {
     function createTodoElement(todo) {
         const todoElement = document.createElement('div');
         todoElement.classList.add('todo', 'priority-' + todo.priority);
+
+        //Create data attribute for element with id as the value
+        //Needed for editing/deleting todos
+        todoElement.setAttribute('data-id', todo.id);
     
         const todoTitle = document.createElement('div');
         todoTitle.className = 'title';
@@ -108,8 +112,46 @@ const interfaceModule = (function() {
 
         todoElement.appendChild(todoEdit);
         todoElement.appendChild(todoDelete);
+
+        todoEdit.addEventListener('click', function() {
+            const todoID = todoElement.getAttribute('data-id');
+            handleEditTodo(todoID);
+        });
     
         container.appendChild(todoElement);
+    }
+
+    function handleEditTodo(todoID) {
+        const currentTodo = todoModule.getTodo(todoID);
+
+        const editForm = document.querySelector('#edit-todo-form');
+        const updateBtn = document.querySelector('#update-todo-btn');
+        
+        editForm.style.visibility = 'visible';
+
+        //Set the form input/textarea values equal to the selected todo values
+        const editTitle = document.querySelector('#edit-title');
+        editTitle.value = currentTodo.title;
+
+        const editDesc = document.querySelector('#edit-description');
+        editDesc.value = currentTodo.desc;
+
+        const editPriority = document.querySelector(`input[name="edit-priority"][value="${currentTodo.priority}"]`);
+        editPriority.checked = true;
+
+        updateBtn.addEventListener('click', function() {
+            const checkedPriority = document.querySelector('input[name="edit-priority"]:checked');
+            //Prevent console error by only assigning value if the radio button is checked
+            if (checkedPriority) {
+                const updatedPriority = checkedPriority.value;
+
+                editForm.style.visibility = 'hidden';
+                todoModule.updateTodo(todoID, editTitle.value, editDesc.value, updatedPriority);
+                
+                clearForm();
+                displayTodos();
+            }
+        });
     }
     
     function displayTodos() {
@@ -120,6 +162,7 @@ const interfaceModule = (function() {
             createTodoElement(todo);
         });
     }
+
     return {createTodoElement, displayTodos, validateForm};
 })();
 
