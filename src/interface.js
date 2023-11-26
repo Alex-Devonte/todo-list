@@ -93,8 +93,9 @@ const interfaceModule = (function() {
         todoDetailBtn.className = 'detail-btn';
         todoDetailBtn.textContent = 'Detail';
         todoElement.appendChild(todoDetailBtn);
-    
-        
+
+        todoDetailBtn.addEventListener('click', () => createDetailPopup(todo));
+
         const editSvg = `
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <title>pencil-outline</title>
@@ -124,6 +125,35 @@ const interfaceModule = (function() {
         });
     
         container.appendChild(todoElement);
+    }
+
+    function createDetailPopup(todo) {
+        const detailDialog = document.createElement('dialog');
+
+        const title = document.createElement('h2');
+        title.textContent = todo.title;
+        detailDialog.appendChild(title);
+
+        const desc = document.createElement('p');
+        desc.textContent = todo.desc ? todo.desc: 'No description. . .';
+        detailDialog.appendChild(desc);
+
+        const priority = document.createElement('div');
+        priority.textContent = todo.priority;
+        detailDialog.appendChild(priority);
+
+        const closeButton = document.createElement('button');
+        closeButton.textContent = 'Close';
+        detailDialog.appendChild(closeButton);
+
+        document.body.appendChild(detailDialog);
+        detailDialog.showModal();
+
+        //Add event listener to close and remove the dialog when the close button is clicked
+        closeButton.addEventListener('click', function() {
+            detailDialog.close();
+            document.body.removeChild(detailDialog);
+        });
     }
 
     function handleEditTodo(todoID) {
