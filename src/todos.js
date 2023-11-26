@@ -6,7 +6,6 @@ const todoModule = (function() {
         if (!localStorage.getItem('todoList') || localStorage.getItem('todoList') === '[]') {
             const defaultTodo = createTodo('Default Todo', 'This is the default todo.', 'medium');
             addTodo(defaultTodo);
-            updateLocalStorage();
         }
     }
 
