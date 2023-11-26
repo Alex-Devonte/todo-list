@@ -83,6 +83,8 @@ const interfaceModule = (function() {
         //Create data attribute for element with id as the value
         //Needed for editing/deleting todos
         todoElement.setAttribute('data-id', todo.id);
+
+        todoElement.appendChild(createCheckBox());
     
         const todoTitle = document.createElement('div');
         todoTitle.className = 'title';
@@ -125,6 +127,20 @@ const interfaceModule = (function() {
         });
     
         container.appendChild(todoElement);
+    }
+
+    function createCheckBox() {
+        const checkbox = document.createElement('div');
+        checkbox.className = 'checkbox';
+
+        checkbox.addEventListener('click', function() {
+            //Get closest todo element which is the element the checkbox is currently on
+            const todo = this.closest('.todo');
+            todo.classList.toggle('todo-checked');
+            checkbox.classList.toggle('checkbox-checked');
+        });
+
+        return checkbox;
     }
 
     function createDetailPopup(todo) {

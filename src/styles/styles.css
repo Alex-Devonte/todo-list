@@ -24,3 +24,22 @@ form {
 .error {
     border: 1px solid red;
 }
+
+.checkbox {
+    border: 1px solid black;
+    border-radius: 100%;
+    margin: 0 15px;
+    padding: 10px;
+}
+
+.checkbox-checked {
+    background-color: black;
+}
+
+.todo-checked > .title {
+    text-decoration: line-through;
+}
+
+.todo-checked *:not(:first-child) {
+    opacity: 0.6;
+}
