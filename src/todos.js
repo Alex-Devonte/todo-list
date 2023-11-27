@@ -47,7 +47,7 @@ const todoModule = (function() {
     }
 
     function getTodos() {
-        todoList = JSON.parse(localStorage.getItem('todoList'));
+        todoList = JSON.parse(localStorage.getItem('todoList')) || [];
         return todoList;
     }
 
