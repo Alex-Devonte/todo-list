@@ -91,12 +91,16 @@ const interfaceModule = (function() {
         todoTitle.textContent = todo.title;
         todoElement.appendChild(todoTitle);
     
+        const detailBtnContainer = document.createElement('div');
+        detailBtnContainer.className = 'detail-btn-container';
+
         const todoDetailBtn = document.createElement('button');
         todoDetailBtn.className = 'detail-btn';
         todoDetailBtn.textContent = 'Detail';
-        todoElement.appendChild(todoDetailBtn);
-
         todoDetailBtn.addEventListener('click', () => createDetailPopup(todo));
+        
+        detailBtnContainer.appendChild(todoDetailBtn);
+        todoElement.appendChild(detailBtnContainer);
 
         const editSvg = `
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -109,12 +113,17 @@ const interfaceModule = (function() {
                 <title>delete</title>
                 <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
             </svg>`;
-        
+
+
+        const editContainer = document.createElement('div');
+        editContainer.className = 'edit-container'; 
+
         const todoEdit = createSvgElement(editSvg, 'edit-icon');
         const todoDelete = createSvgElement(deleteSvg, 'delete-icon');
-
-        todoElement.appendChild(todoEdit);
-        todoElement.appendChild(todoDelete);
+       
+        editContainer.appendChild(todoEdit);
+        editContainer.appendChild(todoDelete);
+        todoElement.appendChild(editContainer);
 
         todoEdit.addEventListener('click', function() {
             const todoID = todoElement.getAttribute('data-id');
