@@ -139,6 +139,9 @@ const interfaceModule = (function() {
     }
 
     function createCheckBox() {
+        const checkboxContainer = document.createElement('div');
+        checkboxContainer.className = 'checkbox-container';
+
         const checkbox = document.createElement('div');
         checkbox.className = 'checkbox';
 
@@ -149,7 +152,8 @@ const interfaceModule = (function() {
             checkbox.classList.toggle('checkbox-checked');
         });
 
-        return checkbox;
+        checkboxContainer.appendChild(checkbox);
+        return checkboxContainer;
     }
 
     function createDetailPopup(todo) {
