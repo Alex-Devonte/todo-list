@@ -113,6 +113,12 @@ const interfaceModule = (function() {
                 <title>delete</title>
                 <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
             </svg>`;
+        
+        const menuSvg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <title>dots-vertical</title>
+            <path d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z" />
+        </svg>`;
 
 
         const editContainer = document.createElement('div');
@@ -120,11 +126,16 @@ const interfaceModule = (function() {
 
         const todoEdit = createSvgElement(editSvg, 'edit-icon');
         const todoDelete = createSvgElement(deleteSvg, 'delete-icon');
-       
+        const todoMenu = createSvgElement(menuSvg, 'menu-icon');
+        const menuElement = createMenu(todo.id);
+
         editContainer.appendChild(todoEdit);
         editContainer.appendChild(todoDelete);
+        editContainer.appendChild(todoMenu);
+        editContainer.appendChild(menuElement);
+        
         todoElement.appendChild(editContainer);
-
+     
         todoEdit.addEventListener('click', function() {
             const todoID = todoElement.getAttribute('data-id');
             handleEditTodo(todoID);
@@ -134,8 +145,50 @@ const interfaceModule = (function() {
             const todoID = todoElement.getAttribute('data-id');
             handleDeleteTodo(todoID);
         });
+
+        todoMenu.addEventListener('click', function(event) {
+            //Stop event from spreading to document
+            event.stopPropagation();
+            menuElement.classList.toggle('menu-active');
+        
+           //Close menu if user clicks away
+            document.body.addEventListener('click', function () {
+                if (menuElement.classList.contains('menu-active')) {
+                    menuElement.classList.remove('menu-active');
+                }
+            });
+    
+        });
     
         container.appendChild(todoElement);
+    }
+
+    function createMenu(todoID) {
+        const menu = document.createElement('div');
+        menu.classList.add('edit-menu');
+
+        const editText = document.createElement('p');
+        editText.textContent = 'Edit';
+        editText.className   = 'edit-link';
+
+        const deleteText = document.createElement('p');
+        deleteText.textContent = 'Delete';
+        deleteText.className = 'delete-link';
+
+        editText.addEventListener('click', function() {
+            handleEditTodo(todoID);
+        });
+
+        deleteText.addEventListener('click', function() {
+            handleDeleteTodo(todoID);
+        });
+
+        menu.appendChild(editText);
+        menu.appendChild(deleteText);
+
+        
+
+        return menu;
     }
 
     function createCheckBox() {
