@@ -1,18 +1,73 @@
+*:not(dialog) {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    
+}   
+
+.todo {
+    font-size: 20px;
+}
+
+#container {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+}
+
+.new-todo-btn {
+    bottom: 30px;
+    position: absolute;
+    right: 30px;
+}
+
 #content {
-   
+   border: 1px solid black;
+   flex-basis: 95%;
+}
+
+.todo-container {
 }
 
 .todo {
     align-items: center;
     border: 1px solid black;
-    display: flex;
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr;
+    justify-content: space-between;
 }
 
-.edit-icon, .delete-icon {
+.title {
+    
+}
+
+.detail-btn-container {
+    
+}
+
+.edit-container {
+    display: flex;
+    grid-column: span 3;
+}
+
+
+.edit-icon, .delete-icon, .menu-icon {
     width: 48px;
 }
 
+.edit-menu {
+    display: none;
+}
+
+.menu-active {
+    display: block;
+}
+
 form {
+    display: none;
     visibility: hidden;
 }
 
