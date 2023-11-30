@@ -226,7 +226,7 @@ const interfaceModule = (function() {
 
         const priority = document.createElement('div');
         priority.textContent = todo.priority;
-        priority.className = 'priority-text';
+        priority.classList.add('priority-text', 'priority-'+todo.priority);
         detailDialog.appendChild(priority);
 
         const closeButton = document.createElement('button');
