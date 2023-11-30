@@ -214,6 +214,7 @@ const interfaceModule = (function() {
 
     function createDetailPopup(todo) {
         const detailDialog = document.createElement('dialog');
+        detailDialog.className = 'detail-dialog';
 
         const title = document.createElement('h2');
         title.textContent = todo.title;
