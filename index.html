@@ -7,49 +7,50 @@
 <script defer src="main.js"></script></head>
 <body>
     <div id="container">
-        <form id="new-todo-form">
-            <div class="title-error error-msg">Title is required</div>
-            <input type="text" id="title" name="title" placeholder="Title" required>
-
-            <textarea id="description" placeholder="Description"></textarea>
-
-            <div class="priority-error error-msg">Must select a priority level</div>
-            <div class="priority-selector">
-                <input type="radio" id="low" name="priority" value="low" required>
-                <label for="low">Low</label>
-
-                <input type="radio" id="medium" name="priority" value="medium">
-                <label for="medium">Medium</label>
-
-                <input type="radio" id="high" name="priority" value="high">
-                <label for="high">High</label>
-            </div>
-            <button type="button" id="add-todo-btn">Add Todo</button>
-        </form>
-        <form id="edit-todo-form">
-            <div class="title-error error-msg">Title is required</div>
-            <input type="text" id="edit-title" name="title" placeholder="Title" required>
-
-            <textarea id="edit-description" placeholder="Description"></textarea>
-
-            <div class="priority-error error-msg">Must select a priority level</div>
-            <div class="priority-selector">
-                <input type="radio" id="edit-low" name="edit-priority" value="low" required>
-                <label for="edit-low">Low</label>
-
-                <input type="radio" id="edit-medium" name="edit-priority" value="medium">
-                <label for="edit-medium">Medium</label>
-
-                <input type="radio" id="edit-high" name="edit-priority" value="high">
-                <label for="edit-high">High</label>
-            </div>
-            <button type="button" id="update-todo-btn">Update Todo</button>
-        </form>
+        <dialog id="new-todo-modal">
+            <form id="new-todo-form">
+                <div class="title-error error-msg">Title is required</div>
+                <input type="text" id="title" name="title" placeholder="Title" required>
+                <textarea id="description" placeholder="Description"></textarea>
+                <div class="priority-error error-msg">Must select a priority level</div>
+                <div class="priority-selector">
+                    <input type="radio" id="low" name="priority" value="low" required>
+                    <label for="low">Low</label>
+                    <input type="radio" id="medium" name="priority" value="medium">
+                    <label for="medium">Medium</label>
+                    <input type="radio" id="high" name="priority" value="high">
+                    <label for="high">High</label>
+                </div>
+                <button type="button" id="add-todo-btn">Add Todo</button>
+            </form>
+        </dialog>
+        <dialog id="edit-todo-modal">
+            <form id="edit-todo-form">
+                <div class="title-error error-msg">Title is required</div>
+                <input type="text" id="edit-title" name="title" placeholder="Title" required>
+                <textarea id="edit-description" placeholder="Description"></textarea>
+                <div class="priority-error error-msg">Must select a priority level</div>
+                <div class="priority-selector">
+                    <input type="radio" id="edit-low" name="edit-priority" value="low" required>
+                    <label for="edit-low">Low</label>
+                    <input type="radio" id="edit-medium" name="edit-priority" value="medium">
+                    <label for="edit-medium">Medium</label>
+                    <input type="radio" id="edit-high" name="edit-priority" value="high">
+                    <label for="edit-high">High</label>
+                </div>
+                <button type="button" id="update-todo-btn">Update Todo</button>
+            </form>
+        </dialog>
         <div id="content">
             <div class="todo-container">
             </div>
+           
+            <div class="toolbar">
+                <svg class="new-todo-btn add-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M13,7H11V11H7V13H11V17H13V13H17V11H13V7Z" />
+                </svg>
+            </div>
         </div>
-        <button class="new-todo-btn">Add New Todo</button>
     </div>
 </body>
 </html>
