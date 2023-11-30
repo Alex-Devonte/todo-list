@@ -18,15 +18,8 @@ body {
     justify-content: center;
 }
 
-.new-todo-btn {
-    bottom: 30px;
-    position: absolute;
-    right: 30px;
-}
-
 #content {
-   border: 1px solid black;
-   flex-basis: 95%;
+   width: 95%;
 }
 
 .todo-container {
@@ -35,13 +28,12 @@ body {
 .todo {
     align-items: center;
     border: 1px solid black;
-    display: grid;
-    grid-template-columns: 0.5fr 2fr 1fr;
+    display: flex;
     justify-content: space-between;
 }
 
 .title {
-    
+    width: 50%;
 }
 
 .detail-btn-container {
@@ -53,6 +45,9 @@ body {
     grid-column: span 3;
 }
 
+.edit-icon, .delete-icon {
+    display: none;
+}
 
 .edit-icon, .delete-icon, .menu-icon {
     width: 48px;
@@ -66,9 +61,23 @@ body {
     display: block;
 }
 
+.toolbar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+}
+
+.add-icon {
+    width: 36px;
+}
+
+.add-icon:hover {
+    cursor: pointer;
+}
+
+
 form {
-    display: none;
-    visibility: hidden;
+  
 }
 
 .error-msg {
@@ -97,4 +106,34 @@ form {
 
 .todo-checked *:not(:first-child) {
     opacity: 0.6;
+}
+
+
+
+@media screen and (min-width: 768px) {
+    #content {
+        width: 85%;
+        max-width: 768px;
+    }
+
+    .edit-icon, .delete-icon {
+        display: block;
+    }
+
+    .menu-icon {
+       display: none;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    #content {
+        width: 65%;
+        max-width: 950px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #content {
+        width: 60%;
+    }
 }
