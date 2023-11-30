@@ -3,6 +3,8 @@ import todoModule from "./todos";
 const container = document.querySelector('.todo-container');
 
 const interfaceModule = (function() {
+    const addFormModal = document.querySelector('#new-todo-modal');
+    const editFormModal = document.querySelector('#edit-todo-modal');
 
     function validateForm() {
         const newTodoBtn = document.querySelector('.new-todo-btn');
@@ -10,7 +12,7 @@ const interfaceModule = (function() {
         const newTodoForm = document.querySelector('#new-todo-form');
 
         newTodoBtn.addEventListener('click', function() {
-            newTodoForm.style.visibility = 'visible';
+            addFormModal.showModal();
         });
     
         addTodoBtn.addEventListener('click', function(e) {
@@ -50,6 +52,7 @@ const interfaceModule = (function() {
                 
                 clearForm();
                 displayTodos();
+                addFormModal.close();
             }
         });
     }
@@ -138,7 +141,9 @@ const interfaceModule = (function() {
      
         todoEdit.addEventListener('click', function() {
             const todoID = todoElement.getAttribute('data-id');
+
             handleEditTodo(todoID);
+            editFormModal.showModal();
         });
 
         todoDelete.addEventListener('click', function() {
@@ -267,6 +272,7 @@ const interfaceModule = (function() {
                 
                 clearForm();
                 displayTodos();
+                editFormModal.close();
 
                 //Remove event listener to prevent it from being called twice
                 updateBtn.removeEventListener('click', handleUpdate);
