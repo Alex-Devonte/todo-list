@@ -75,9 +75,25 @@ body {
     cursor: pointer;
 }
 
+dialog {
+    width: 80%;
+}
 
 form {
-  
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+}
+
+input, textarea {
+    padding: 5px;
+}
+
+.priority-selector {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
 }
 
 .error-msg {
@@ -122,6 +138,11 @@ form {
 
     .menu-icon {
        display: none;
+    }
+
+    dialog {
+        max-width: 70%;
+        width: 400px;
     }
 }
 
