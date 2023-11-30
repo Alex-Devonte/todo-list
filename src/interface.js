@@ -142,7 +142,6 @@ const interfaceModule = (function() {
             const todoID = todoElement.getAttribute('data-id');
 
             handleEditTodo(todoID);
-            editFormModal.showModal();
         });
 
         todoDelete.addEventListener('click', function() {
@@ -243,6 +242,7 @@ const interfaceModule = (function() {
     }
 
     function handleEditTodo(todoID) {
+        editFormModal.showModal();
         const currentTodo = todoModule.getTodo(todoID);
 
         const editForm = document.querySelector('#edit-todo-form');
