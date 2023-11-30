@@ -49,6 +49,19 @@ dialog::backdrop {
     opacity: 0.75;
 }
 
+dialog[open] {
+    animation: fadeIn 0.5s ease normal;
+  }
+  
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
 .detail-dialog {
     text-align: center;
 }
@@ -69,6 +82,7 @@ button {
     border: 1px solid var(--secondary-border);
     border-radius: 5px;
     padding: 10px;
+    transition: border 0.05s ease;
 }
 
 button:hover {
@@ -137,6 +151,7 @@ label[for='high'], label[for='edit-high'] {
     justify-content: space-between;
     margin: 5px;
     padding: 5px;
+    transition: background-color 0.20s ease-in-out;
 }
     
 .priority-low {
@@ -197,6 +212,7 @@ label[for='high'], label[for='edit-high'] {
 
 .edit-icon, .delete-icon {
     display: none;
+    transition: fill 0.25s ease;
 }
 
 .edit-icon, .delete-icon, .menu-icon, .add-icon {
@@ -233,6 +249,7 @@ label[for='high'], label[for='edit-high'] {
 .add-icon {
     fill: var(--icon-fill);
     opacity: 0.5;
+    transition: opacity 0.25s ease;
 }
 
 .add-icon:hover {
