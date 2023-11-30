@@ -47,7 +47,6 @@ const interfaceModule = (function() {
             }
     
             if (isValid) {
-                newTodoForm.style.visibility = 'hidden';
                 todoModule.addTodo(todoModule.createTodo(title, desc.value, priority));
                 
                 clearForm();
@@ -248,8 +247,6 @@ const interfaceModule = (function() {
 
         const editForm = document.querySelector('#edit-todo-form');
         const updateBtn = document.querySelector('#update-todo-btn');
-        
-        editForm.style.visibility = 'visible';
 
         //Set the form input/textarea values equal to the selected todo values
         const editTitle = document.querySelector('#edit-title');
@@ -267,7 +264,6 @@ const interfaceModule = (function() {
             if (checkedPriority) {
                 const updatedPriority = checkedPriority.value;
 
-                editForm.style.visibility = 'hidden';
                 todoModule.updateTodo(todoID, editTitle.value, editDesc.value, updatedPriority);
                 
                 clearForm();
